@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections;
 using Throwing;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class Thrower : MonoBehaviour
 {
@@ -22,6 +18,7 @@ public class Thrower : MonoBehaviour
     void Throw()
     {
         Projectile.Detach();
+        Projectile.MoveIkTargetToTarget(Target.transform.position);
         if(throwingCoroutine != null)
             StopCoroutine(throwingCoroutine);
         throwingCoroutine = StartCoroutine(SimulateProjectileCor());
@@ -64,7 +61,7 @@ public class Thrower : MonoBehaviour
         float target_Distance = Vector3.Distance(Projectile.transform.position, Target.position);
  
         // Calculate the velocity needed to throw the object to the target at specified angle.
-        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / Physics.gravity.magnitude);
+        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / (Physics.gravity.magnitude * gravityScale));
  
         
         //calculateFiringAngleIfSet
@@ -78,13 +75,14 @@ public class Thrower : MonoBehaviour
         float flightDuration = target_Distance / Vx;
    
         // Rotate projectile to face the target.
-        Projectile.transform.rotation = Quaternion.LookRotation(Target.position - Projectile.transform.position);
-       
+        Projectile.transform.rotation = Quaternion.LookRotation(Projectile.transform.position- throwOrigin.position);
+
+
         float elapse_time = 0;
  
         while (elapse_time < flightDuration)
         {
-            Projectile.transform.Translate(0, (Vy - (Physics.gravity.magnitude  * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+            Projectile.transform.Translate(0, (Vy - (Physics.gravity.magnitude * gravityScale  * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
            
             elapse_time += Time.deltaTime;
  

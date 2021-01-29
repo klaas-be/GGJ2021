@@ -9,8 +9,11 @@ namespace Throwing
     {
 
         public Transform anchor;
+        public Transform ikTarget; 
 
         private Transform parent;
+        private Vector3 originalTargetPosition; 
+        
 
         private void Start()
         {
@@ -31,8 +34,9 @@ namespace Throwing
                 transform.position = Vector3.Lerp(transform.position, anchor.transform.position, elapse_time);
                 yield return null;
             }
-            
-         
+
+
+            ikTarget.position = originalTargetPosition;
             
             transform.parent = parent;
             transform.position = anchor.position;
@@ -44,6 +48,13 @@ namespace Throwing
         public void Detach()
         {
             parent = null;
+        }
+
+        public void MoveIkTargetToTarget(Vector3 targetPosition)
+        {
+            originalTargetPosition = ikTarget.position;
+            ikTarget.position = targetPosition;
+
         }
     }
 }
