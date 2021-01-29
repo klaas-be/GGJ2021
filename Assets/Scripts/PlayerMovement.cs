@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float speed = 5.0f;
+    [SerializeField] private float jumpHeight = 5.0f;
+    private float gravityValue = -20f;
+    private Vector3 motion;
 
     private CharacterController characterController;
 
@@ -25,11 +28,9 @@ public class PlayerMovement : MonoBehaviour
         camRot.z = 0;
         transform.rotation = Quaternion.Euler(camRot);
 
-        Vector3 motion = new Vector3(horizontal, 0, vertical) * (speed * Time.deltaTime);
+        motion = new Vector3(horizontal, 0, vertical) * (speed * Time.deltaTime);
         motion = Quaternion.Euler(camRot) * motion;
-
+        motion.y = gravityValue * Time.deltaTime;
         characterController.Move(motion);
-
-
     }
 }
