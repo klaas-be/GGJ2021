@@ -48,6 +48,7 @@ namespace DitzelGames.FastIK
         protected Quaternion StartRotationTarget;
         protected Transform Root;
 
+        private bool followTarget = true;
 
         // Start is called before the first frame update
         void Awake()
@@ -105,15 +106,24 @@ namespace DitzelGames.FastIK
 
                 current = current.parent;
             }
-
-
-
         }
 
         // Update is called once per frame
         void LateUpdate()
         {
-            ResolveIK();
+            if (followTarget)
+            {
+                ResolveIK();
+            }
+        }
+
+        /// <summary>
+        /// Sets the value, if the ik is resolved
+        /// </summary>
+        /// <param name="to">Follow ik target</param>
+        public void SetFollowIKTarget(bool to)
+        {
+            followTarget = to;
         }
 
         private void ResolveIK()
