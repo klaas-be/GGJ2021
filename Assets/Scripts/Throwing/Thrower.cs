@@ -10,15 +10,9 @@ public class Thrower : MonoBehaviour
     public Transform Target;
     public float firingAngle = 45.0f;
     public float gravity = 9.8f;
-    public Transform hightestPoint; 
- 
-    public Transform Projectile;      
-    private Transform myTransform;
-   
-    void Awake()
-    {
-        myTransform = transform;      
-    }
+
+    public Transform Projectile;
+    
  
     void Throw()
     {          
