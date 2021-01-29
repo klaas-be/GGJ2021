@@ -29,5 +29,7 @@ public class PlayerMovement : MonoBehaviour
         motion = Quaternion.Euler(camRot) * motion;
 
         characterController.Move(motion);
+
+
     }
 }
