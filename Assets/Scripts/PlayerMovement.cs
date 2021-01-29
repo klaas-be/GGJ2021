@@ -17,24 +17,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        characterController = this.GetComponent<CharacterController>();    
+        characterController = this.GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
     // Update is called once per frame
     void Update()
     {
-
-      
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+
 
         Vector3 camRot = mainCamera.transform.eulerAngles;
         camRot.x = 0;
         camRot.z = 0;
-        //transform.rotation = Quaternion.Euler(camRot);
+        transform.rotation = Quaternion.Euler(camRot);
 
         motion = new Vector3(horizontal, 0, vertical) * (speed * Time.deltaTime);
-        //motion = Quaternion.Euler(camRot) * motion;
+        motion = Quaternion.Euler(camRot) * motion;
         motion.y = gravityValue * Time.deltaTime;
         characterController.Move(motion);
     }
