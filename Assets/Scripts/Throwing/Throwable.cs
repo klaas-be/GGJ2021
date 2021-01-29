@@ -32,6 +32,8 @@ namespace Throwing
                 yield return null;
             }
             
+         
+            
             transform.parent = parent;
             transform.position = anchor.position;
         }
