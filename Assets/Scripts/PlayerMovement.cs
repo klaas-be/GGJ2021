@@ -26,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 camRot = mainCamera.transform.eulerAngles;
         camRot.x = 0;
         camRot.z = 0;
-        transform.rotation = Quaternion.Euler(camRot);
+        //transform.rotation = Quaternion.Euler(camRot);
 
         motion = new Vector3(horizontal, 0, vertical) * (speed * Time.deltaTime);
-        motion = Quaternion.Euler(camRot) * motion;
+        //motion = Quaternion.Euler(camRot) * motion;
         motion.y = gravityValue * Time.deltaTime;
         characterController.Move(motion);
     }
