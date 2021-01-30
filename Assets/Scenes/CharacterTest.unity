@@ -626,7 +626,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310439155}
-  m_LocalRotation: {x: 0.018189445, y: -0.000000030140882, z: 0.000000009441371, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189445, y: -0.000000016371287, z: 0.0000000051281637,
+    w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1357,6 +1358,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1095978014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 624319898825995612, guid: f1304b9a0c00cc149ae76b268c8f5092,
+    type: 3}
+  m_PrefabInstance: {fileID: 281954906867125757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1095978015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095978014}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b78e76dcf76b6c48800dd096f8171e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 1095978017}
+  wobbleDist: 0.5
+--- !u!143 &1095978017 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 1121033605, guid: f1304b9a0c00cc149ae76b268c8f5092,
+    type: 3}
+  m_PrefabInstance: {fileID: 281954906867125757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1466474450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1394,6 +1421,11 @@ PrefabInstance:
       propertyPath: rightHandThrowable
       value: 
       objectReference: {fileID: 281954906867125761}
+    - target: {fileID: 4448395681426152762, guid: 93115c3afc7023a4f8d9a2bf0fc4db40,
+        type: 3}
+      propertyPath: handOffsetLeftRight
+      value: 0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 4448395682382256882, guid: 93115c3afc7023a4f8d9a2bf0fc4db40,
         type: 3}
       propertyPath: m_Name
@@ -2096,8 +2128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031935486}
-  m_LocalRotation: {x: -0.018141516, y: -0.000000043743817, z: 0.000000011975971,
-    w: 0.9998355}
+  m_LocalRotation: {x: -0.018141516, y: -0.0000000447747, z: 0.000000012258203, w: 0.9998355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2112,6 +2143,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1121033606, guid: f1304b9a0c00cc149ae76b268c8f5092, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 624319898825995611, guid: f1304b9a0c00cc149ae76b268c8f5092,
         type: 3}
       propertyPath: m_RootOrder
