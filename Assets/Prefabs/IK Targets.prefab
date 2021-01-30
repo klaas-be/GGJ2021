@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4448395681426152762}
   m_Layer: 0
   m_Name: IK Targets
-  m_TagString: Untagged
+  m_TagString: IKTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,12 +238,11 @@ MonoBehaviour:
   movementScriptRef: {fileID: 0}
   HandsRef: {fileID: 0}
   FeetRef: {fileID: 0}
-  stepTriggerSize: 0.3
-  stepSize: 1.7
+  stepTriggerSize: 0.1
+  stepSize: 2
   feetOffsetLeftRight: 0.3
-  timeForAStep: 0.1
-  testnewPosLeft: {x: 0, y: 0, z: 0}
-  testnewPosRight: {x: 0, y: 0, z: 0}
-  testLeftDotDir: {x: 0, y: 0, z: 0}
-  testRightDotDir: {x: 0, y: 0, z: 0}
-  isRightFootAttached: 1
+  timeForAStep: 0.12
+  testnewPosLeft: {x: 1.5178105, y: 0.25999975, z: 16.016724}
+  testnewPosRight: {x: 1.084998, y: 0.26, z: 14.279678}
+  testLeftDotDir: {x: -0.84566295, y: 0.0000007947284, z: 0.53371733}
+  testRightDotDir: {x: 0.84566295, y: 0.0000007947284, z: -0.53371733}

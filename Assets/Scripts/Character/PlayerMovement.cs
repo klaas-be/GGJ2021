@@ -7,11 +7,12 @@ using Cursor = UnityEngine.Cursor;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpHeight = 5.0f;
+    private Camera mainCamera;
     private float gravityValue = -20f;
     private Vector3 motion;
+    private Vector3 camRot;
 
     private CharacterController characterController;
 
@@ -25,18 +26,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-      
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 camRot = mainCamera.transform.eulerAngles;
+        camRot = mainCamera.transform.eulerAngles;
         camRot.x = 0;
         camRot.z = 0;
         transform.rotation = Quaternion.Euler(camRot);
 
-        motion = new Vector3(horizontal, 0, vertical) * (speed * Time.deltaTime);
-        motion = Quaternion.Euler(camRot) * motion;
+        motion = Quaternion.Euler(camRot) * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        motion = motion * (speed * Time.deltaTime);
         motion.y = gravityValue * Time.deltaTime;
         characterController.Move(motion);
     }
@@ -44,5 +40,10 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetLocalMoveDir()
     {
         return motion;
+    }
+
+    public Vector3 GetMotionVector()
+    {
+        return Quaternion.Euler(-camRot) * motion;
     }
 }
