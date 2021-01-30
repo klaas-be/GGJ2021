@@ -11,7 +11,7 @@ namespace Throwing
         public Transform anchor;
         public Transform ikTarget;
 
-        public bool IsAttached { get { return parent != null; } }
+        public bool IsAttached { get { return transform.parent != null; } }
 
         private Transform parent;
         private Vector3 originalTargetPosition; 
@@ -27,6 +27,7 @@ namespace Throwing
         /// </summary>
         public IEnumerator Reattach()
         {
+            if (IsAttached) yield return null; 
 
             float elapse_time = 0;
 
@@ -50,7 +51,7 @@ namespace Throwing
         /// </summary>
         public void Detach()
         {
-            parent = null;
+            transform.parent = null;
         }
 
         public void MoveIkTargetToTarget(Vector3 targetPosition)

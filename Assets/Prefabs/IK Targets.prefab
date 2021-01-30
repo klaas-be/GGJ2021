@@ -238,10 +238,12 @@ MonoBehaviour:
   movementScriptRef: {fileID: 0}
   HandsRef: {fileID: 0}
   FeetRef: {fileID: 0}
-  stepTriggerSize: 1.2
-  stepSize: 1
+  stepTriggerSize: 0.3
+  stepSize: 1.7
   feetOffsetLeftRight: 0.3
-  timeForAStep: 0.25
-  testDistance: 0
-  testDot: 0
-  testDir: {x: 0, y: 0, z: 0}
+  timeForAStep: 0.1
+  testnewPosLeft: {x: 0, y: 0, z: 0}
+  testnewPosRight: {x: 0, y: 0, z: 0}
+  testLeftDotDir: {x: 0, y: 0, z: 0}
+  testRightDotDir: {x: 0, y: 0, z: 0}
+  isRightFootAttached: 1
