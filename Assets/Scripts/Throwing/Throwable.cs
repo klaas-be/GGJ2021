@@ -9,7 +9,9 @@ namespace Throwing
     {
 
         public Transform anchor;
-        public Transform ikTarget; 
+        public Transform ikTarget;
+
+        public bool IsAttached { get { return parent != null; } }
 
         private Transform parent;
         private Vector3 originalTargetPosition; 
