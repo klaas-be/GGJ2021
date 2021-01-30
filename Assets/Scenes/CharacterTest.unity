@@ -1357,45 +1357,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1121033603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 624319898825995612, guid: f1304b9a0c00cc149ae76b268c8f5092,
-    type: 3}
-  m_PrefabInstance: {fileID: 281954906867125757}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &1121033605
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121033603}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 4.5
-  m_Radius: 1
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.5, z: 0}
---- !u!114 &1121033606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121033603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeaaa396b2e774b40b341186dc527a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 48951620}
-  speed: 12
-  jumpHeight: 5
 --- !u!1001 &1466474450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1413,11 +1374,6 @@ PrefabInstance:
       propertyPath: HandsRef
       value: 
       objectReference: {fileID: 281954906867125764}
-    - target: {fileID: 4448395681426152762, guid: 93115c3afc7023a4f8d9a2bf0fc4db40,
-        type: 3}
-      propertyPath: timeForAStep
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 4448395681426152762, guid: 93115c3afc7023a4f8d9a2bf0fc4db40,
         type: 3}
       propertyPath: leftFootThrowable
@@ -2161,11 +2117,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 281954906903287118, guid: f1304b9a0c00cc149ae76b268c8f5092,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1121033606, guid: f1304b9a0c00cc149ae76b268c8f5092, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 48951620}
     - target: {fileID: 624319898825995611, guid: f1304b9a0c00cc149ae76b268c8f5092,
         type: 3}
       propertyPath: m_RootOrder
@@ -2234,7 +2189,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 281954906867125757}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121033603}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeaaa396b2e774b40b341186dc527a6c, type: 3}
