@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-
         Vector3 camRot = mainCamera.transform.eulerAngles;
         camRot.x = 0;
         camRot.z = 0;
@@ -36,5 +35,10 @@ public class PlayerMovement : MonoBehaviour
         motion = Quaternion.Euler(camRot) * motion;
         motion.y = gravityValue * Time.deltaTime;
         characterController.Move(motion);
+    }
+
+    public Vector3 GetLocalMoveDir()
+    {
+        return motion;
     }
 }
