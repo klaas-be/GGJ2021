@@ -1916,8 +1916,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624319898825995611}
-  - component: {fileID: 6851844186077598245}
   - component: {fileID: 6851844186077598246}
+  - component: {fileID: 1121033605}
+  - component: {fileID: 1121033606}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1946,7 +1947,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &6851844186077598245
+--- !u!114 &6851844186077598246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624319898825995612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeaaa396b2e774b40b341186dc527a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  speed: 12
+  jumpHeight: 5
+--- !u!143 &1121033605
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1964,7 +1980,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.5, z: 0}
---- !u!114 &6851844186077598246
+--- !u!114 &1121033606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
