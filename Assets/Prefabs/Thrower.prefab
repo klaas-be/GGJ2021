@@ -9,7 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8401133057128057533}
-  - component: {fileID: 8401133057128057530}
+  - component: {fileID: 581219842}
+  - component: {fileID: 2297372562132003211}
+  - component: {fileID: 2058588590841808396}
+  - component: {fileID: 581219844}
+  - component: {fileID: 1151933393939372564}
   m_Layer: 0
   m_Name: Thrower
   m_TagString: Untagged
@@ -31,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8401133057128057530
+--- !u!114 &581219842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,4 +51,72 @@ MonoBehaviour:
   Target: {fileID: 0}
   firingAngle: 45
   gravityScale: 1
+  ThrowKey: 102
+  InteractionKey: 0
   Projectile: {fileID: 0}
+--- !u!114 &2297372562132003211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401133057128057532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27612c39be385a5e9bb459a57a7db24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwOrigin: {fileID: 0}
+  Target: {fileID: 0}
+  firingAngle: 45
+  gravityScale: 1
+  ThrowKey: 102
+  InteractionKey: 0
+  Projectile: {fileID: 0}
+--- !u!114 &2058588590841808396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401133057128057532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27612c39be385a5e9bb459a57a7db24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwOrigin: {fileID: 0}
+  Target: {fileID: 0}
+  firingAngle: 45
+  gravityScale: 1
+  ThrowKey: 102
+  InteractionKey: 0
+  Projectile: {fileID: 0}
+--- !u!114 &581219844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401133057128057532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4212f799634c45ceb0233d7abe02c80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwable: {fileID: 0}
+  detachKey: 103
+--- !u!114 &1151933393939372564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401133057128057532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4212f799634c45ceb0233d7abe02c80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwable: {fileID: 0}
+  detachKey: 103
