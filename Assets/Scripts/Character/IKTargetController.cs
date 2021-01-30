@@ -153,11 +153,6 @@ public class IKTargetController : MonoBehaviour
         lastFrameMovDir = moveDir;
     }
 
-    private void LeanCharBodyToMovement()
-    {
-
-    }
-
     IEnumerator SetLeftFootTarget(Vector3 newPos, float timeToStep = -1f)
     {
         if(timeToStep == -1)
@@ -184,6 +179,7 @@ public class IKTargetController : MonoBehaviour
         }
 
         leftFootTarget.position = newPos;
+        leftFootTarget.rotation = Quaternion.Euler(0, Vector3.SignedAngle(Vector3.forward, movementScriptRef.GetBodyForward(), Vector3.up), 0);
 
         isLeftFootMoving = false;
         isLeftFootTurn = false;
@@ -215,6 +211,7 @@ public class IKTargetController : MonoBehaviour
         }
 
         rightFootTarget.position = newPos;
+        rightFootTarget.rotation = Quaternion.Euler(0, Vector3.SignedAngle(Vector3.forward, movementScriptRef.GetBodyForward(), Vector3.up), 0);
 
         isRightFootMoving = false;
         isLeftFootTurn = true;
@@ -254,7 +251,7 @@ public class IKTargetController : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(FeetRef.position, FeetRef.position + lastmoveDir);
         Gizmos.color = Color.black;
-        Gizmos.DrawSphere(testnewPosLeft, 0.3f);
-        Gizmos.DrawSphere(testnewPosRight, 0.3f);
+        Gizmos.DrawSphere(testnewPosLeft, 0.1f);
+        Gizmos.DrawSphere(testnewPosRight, 0.1f);
     }
 }

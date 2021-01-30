@@ -46,4 +46,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return Quaternion.Euler(-camRot) * motion;
     }
+
+    public Vector3 GetBodyForward()
+    {
+        return this.transform.forward;
+    }
 }
