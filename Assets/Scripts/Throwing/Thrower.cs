@@ -10,7 +10,8 @@ public class Thrower : MonoBehaviour
     public Selectable Target;
     public float firingAngle = 45.0f;
     public float gravityScale = 1f;
-    public KeyCode ThrowKey; 
+    public KeyCode ThrowKey;
+    public KeyCode InteractionKey;
 
     public Throwable Projectile;
 
@@ -44,7 +45,13 @@ public class Thrower : MonoBehaviour
         {
             Reset();
         }
-        ;
+
+        
+        if (Input.GetKeyDown(InteractionKey))
+        {
+            if(Projectile.ConnectedInteractable != null)
+                Projectile.ConnectedInteractable.Interact();
+        }
     }
 
     private void Reset()
@@ -53,6 +60,11 @@ public class Thrower : MonoBehaviour
             StopCoroutine(throwingCoroutine);
         
         StartCoroutine(Projectile.Reattach());
+        if (Target.GetType() == typeof(Interactable))
+        {
+            Interactable s = (Interactable) Target;
+            s.UnlinkThrowable(Projectile);
+        }
     }
 
 
@@ -100,6 +112,12 @@ public class Thrower : MonoBehaviour
             elapse_time += Time.deltaTime;
  
             yield return null;
+        }
+
+        if (Target.GetType() == typeof(Interactable))
+        {
+            Interactable s = (Interactable) Target;
+            s.linkedThrowable(Projectile);
         }
     }
 }
