@@ -70,24 +70,24 @@ public class Thrower : MonoBehaviour
         Projectile.transform.position = throwOrigin.position;
        
         // Calculate distance to target
-        float target_Distance = Vector3.Distance(Projectile.transform.position, Target.position);
+        float target_Distance = Vector3.Distance(throwOrigin.position, Target.position);
  
         // Calculate the velocity needed to throw the object to the target at specified angle.
         float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / (Physics.gravity.magnitude * gravityScale));
- 
-        
+
+        projectile_Velocity *= 2; 
         //calculateFiringAngleIfSet
 
         
         // Extract the X  Y componenent of the velocity
         float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
         float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
- 
+
         // Calculate flight time.
-        float flightDuration = target_Distance / Vx;
+        float flightDuration = (target_Distance / Vx) ;
    
         // Rotate projectile to face the target.
-        Projectile.transform.rotation = Quaternion.LookRotation(Projectile.transform.position- throwOrigin.position);
+       // Projectile.transform.rotation = Quaternion.LookRotation(Projectile.transform.position- throwOrigin.position);
 
 
         float elapse_time = 0;
@@ -95,7 +95,7 @@ public class Thrower : MonoBehaviour
         while (elapse_time < flightDuration)
         {
             Projectile.transform.Translate(0, (Vy - (Physics.gravity.magnitude * gravityScale  * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
-           
+           Projectile.transform.LookAt(Target);
             elapse_time += Time.deltaTime;
  
             yield return null;
