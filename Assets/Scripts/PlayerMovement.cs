@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpHeight = 5.0f;
+    [SerializeField] private bool lockCursor;
+    
     private float gravityValue = -20f;
     private Vector3 motion;
 
@@ -20,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = Camera.main;
         
         characterController = this.GetComponent<CharacterController>();    
-        Cursor.lockState = CursorLockMode.Locked;
+        if(lockCursor)
+            Cursor.lockState = CursorLockMode.Locked;
     }
     // Update is called once per frame
     void Update()

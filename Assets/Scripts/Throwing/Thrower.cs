@@ -6,10 +6,11 @@ using UnityEngine;
 public class Thrower : MonoBehaviour
 {
 
-    public Transform throwOrigin; 
-    public Transform Target;
+    public Anchor throwOrigin; 
+    public Selectable Target;
     public float firingAngle = 45.0f;
     public float gravityScale = 1f;
+    public KeyCode ThrowKey; 
 
     public Throwable Projectile;
 
@@ -19,8 +20,8 @@ public class Thrower : MonoBehaviour
     void Throw()
     {
         SetTarget();
-        Projectile.Detach();
         if (Target == null) return; 
+        Projectile.Detach();
         Projectile.MoveIkTargetToTarget(Target.transform.position);
         if(throwingCoroutine != null)
             StopCoroutine(throwingCoroutine);
@@ -34,7 +35,7 @@ public class Thrower : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(ThrowKey))
         {
             Throw();
         }
@@ -58,7 +59,7 @@ public class Thrower : MonoBehaviour
     private void SetTarget()
     {
         if (!(SelectionManager.Selected is null))
-            Target = SelectionManager.Selected.transform;
+            Target = SelectionManager.Selected;
         else
             Target = null; 
     }
@@ -70,10 +71,10 @@ public class Thrower : MonoBehaviour
         Projectile.transform.position = throwOrigin.position;
        
         // Calculate distance to target
-        float target_Distance = Vector3.Distance(throwOrigin.position, Target.position);
+        float target_Distance = Vector3.Distance(throwOrigin.position, Target.transform.position);
  
         // Calculate the velocity needed to throw the object to the target at specified angle.
-        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / (Physics.gravity.magnitude * gravityScale));
+        float projectile_Velocity = target_Distance / ((Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / (Physics.gravity.magnitude * gravityScale)));
 
         projectile_Velocity *= 2; 
         //calculateFiringAngleIfSet
@@ -95,7 +96,7 @@ public class Thrower : MonoBehaviour
         while (elapse_time < flightDuration)
         {
             Projectile.transform.Translate(0, (Vy - (Physics.gravity.magnitude * gravityScale  * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
-           Projectile.transform.LookAt(Target);
+           Projectile.transform.LookAt(Target.transform);
             elapse_time += Time.deltaTime;
  
             yield return null;
