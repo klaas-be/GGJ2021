@@ -56,15 +56,22 @@ public class Thrower : MonoBehaviour
 
     private void Reset()
     {
+
+        if (Target != null)
+        {
+
+            if (Target.GetType() == typeof(Interactable))
+            {
+                var s = (Interactable) Target;
+                s.UnlinkThrowable(Projectile);
+            }
+        }
+
         if(throwingCoroutine != null)
             StopCoroutine(throwingCoroutine);
         
         StartCoroutine(Projectile.Reattach());
-        if (Target.GetType() == typeof(Interactable))
-        {
-            Interactable s = (Interactable) Target;
-            s.UnlinkThrowable(Projectile);
-        }
+      
     }
 
 

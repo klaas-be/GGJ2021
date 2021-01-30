@@ -2108,12 +2108,17 @@ PrefabInstance:
     - target: {fileID: 581219844, guid: 60fe3f5b8b69c4570bd088365e1927b1, type: 3}
       propertyPath: throwable
       value: 
-      objectReference: {fileID: 524548371}
+      objectReference: {fileID: 1800813744}
     - target: {fileID: 1151933393939372564, guid: 60fe3f5b8b69c4570bd088365e1927b1,
         type: 3}
       propertyPath: detachKey
       value: 98
       objectReference: {fileID: 0}
+    - target: {fileID: 1151933393939372564, guid: 60fe3f5b8b69c4570bd088365e1927b1,
+        type: 3}
+      propertyPath: throwable
+      value: 
+      objectReference: {fileID: 439478576}
     - target: {fileID: 2058588590841808396, guid: 60fe3f5b8b69c4570bd088365e1927b1,
         type: 3}
       propertyPath: ThrowKey
@@ -2129,6 +2134,11 @@ PrefabInstance:
       propertyPath: throwOrigin
       value: 
       objectReference: {fileID: 4172756716434085794}
+    - target: {fileID: 2058588590841808396, guid: 60fe3f5b8b69c4570bd088365e1927b1,
+        type: 3}
+      propertyPath: InteractionKey
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2297372562132003211, guid: 60fe3f5b8b69c4570bd088365e1927b1,
         type: 3}
       propertyPath: Projectile
@@ -2139,6 +2149,11 @@ PrefabInstance:
       propertyPath: throwOrigin
       value: 
       objectReference: {fileID: 2541646103447590056}
+    - target: {fileID: 2297372562132003211, guid: 60fe3f5b8b69c4570bd088365e1927b1,
+        type: 3}
+      propertyPath: InteractionKey
+      value: 49
+      objectReference: {fileID: 0}
     - target: {fileID: 8401133057128057532, guid: 60fe3f5b8b69c4570bd088365e1927b1,
         type: 3}
       propertyPath: m_Name
