@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  speed: 12
+  speed: 0.2
   jumpHeight: 5
 --- !u!1 &624319898873114875
 GameObject:
