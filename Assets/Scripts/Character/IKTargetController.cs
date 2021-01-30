@@ -24,11 +24,13 @@ public class IKTargetController : MonoBehaviour
 
     [Header("Settings")]
     public float stepTriggerSize = 1.2f;
-    public float stepSize = 1f;
+    public float stepAmount = 1f;
+    public float handMoveAmount = 1.5f;
     public float feetOffsetLeftRight = 0.3f;
+    public float handOffsetLeftRight = 0.5f;
     public float timeForAStep = 0.5f;
 
-    private Vector3 moveDir  = Vector3.zero;
+    private Vector3 moveDir = Vector3.zero;
     private Vector3 lastFrameMovDir = Vector3.zero;
     private Vector3 lastmoveDir = Vector3.zero;
     private bool isLeftFootTurn = true;
@@ -73,24 +75,36 @@ public class IKTargetController : MonoBehaviour
                      && Vector3.Dot(lastmoveDir, leftFootTarget.position - FeetRef.position) < 0)
                     {
                         //linken Fuss setzen
-                        Vector3 newPos = FeetRef.position + lastmoveDir * stepSize - FeetRef.right * feetOffsetLeftRight;
-                        testnewPosLeft = newPos;
+                        Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount - FeetRef.right * feetOffsetLeftRight;
                         if (!isLeftFootMoving)
                             StartCoroutine(SetLeftFootTarget(newPos));
+
+                        //Rechte Hand Setzen
+                        newPos = HandsRef.position + lastmoveDir * handMoveAmount + HandsRef.right * handOffsetLeftRight;
+                        if (rightHandThrowable.IsAttached)
+                        {
+                            StartCoroutine(SetRightHandTarget(newPos));
+                        }
                     }
                 }
-                //rechten Fuss bewegen
-                else if(!isLeftFootTurn)
+                //rechten Fuss und linke Hand bewegen
+                else if (!isLeftFootTurn)
                 {
                     if (Vector3.Distance(FeetRef.position, leftFootTarget.position) > stepTriggerSize
                      && Vector3.Dot(lastmoveDir, rightFootTarget.position - FeetRef.position) < 0
                      && Vector3.Dot(lastmoveDir, leftFootTarget.position - FeetRef.position) < 0)
                     {
                         //rechten Fuss setzen
-                        Vector3 newPos = FeetRef.position + lastmoveDir * stepSize + FeetRef.right * feetOffsetLeftRight;
-                        testnewPosRight = newPos;
+                        Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount + FeetRef.right * feetOffsetLeftRight;
                         if (!isRightFootMoving)
                             StartCoroutine(SetRightFootTarget(newPos));
+
+                        //Linke Hand Setzen
+                        newPos = HandsRef.position + lastmoveDir * handMoveAmount - HandsRef.right * handOffsetLeftRight;
+                        if (leftHandThrowable.IsAttached)
+                        {
+                            StartCoroutine(SetLeftHandTarget(newPos));
+                        }
                     }
                 }
             }
@@ -98,28 +112,52 @@ public class IKTargetController : MonoBehaviour
             else if (!leftFootThrowable.IsAttached && rightFootThrowable.IsAttached)
             {
                 //rechten Fuss bewegen
-                if (Vector3.Distance(FeetRef.position, rightFootTarget.position) > stepSize*0.75f
+                if (Vector3.Distance(FeetRef.position, rightFootTarget.position) > stepAmount * 0.75f
                      && Vector3.Dot(lastmoveDir, rightFootTarget.position - FeetRef.position) < 0)
                 {
                     //rechten Fuss setzen
-                    Vector3 newPos = FeetRef.position + lastmoveDir * stepSize;
-                    testnewPosLeft = newPos;
-                    if(!isRightFootMoving)
+                    Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount;
+                    if (!isRightFootMoving)
                         StartCoroutine(SetRightFootTarget(newPos));
+
+                    //Linke Hand Setzen
+                    newPos = HandsRef.position + lastmoveDir * handMoveAmount - HandsRef.right * handOffsetLeftRight;
+                    if (leftHandThrowable.IsAttached)
+                    {
+                        StartCoroutine(SetLeftHandTarget(newPos));
+                    }
+                    //Rechte Hand Setzen
+                    newPos = HandsRef.position + lastmoveDir * handMoveAmount + HandsRef.right * handOffsetLeftRight;
+                    if (rightHandThrowable.IsAttached)
+                    {
+                        StartCoroutine(SetRightHandTarget(newPos));
+                    }
                 }
             }
             //Rechter Fuss fehlt
             else if (leftFootThrowable.IsAttached && !rightFootThrowable.IsAttached)
             {
                 //linken Fuss bewegen
-                if (Vector3.Distance(FeetRef.position, leftFootTarget.position) > stepSize*0.75f
+                if (Vector3.Distance(FeetRef.position, leftFootTarget.position) > stepAmount * 0.75f
                      && Vector3.Dot(lastmoveDir, leftFootTarget.position - FeetRef.position) < 0)
                 {
                     //linken Fuss setzen
-                    Vector3 newPos = FeetRef.position + lastmoveDir * stepSize;
-                    testnewPosLeft = newPos;
-                    if(!isLeftFootMoving)
+                    Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount;
+                    if (!isLeftFootMoving)
                         StartCoroutine(SetLeftFootTarget(newPos));
+
+                    //Linke Hand Setzen
+                    newPos = HandsRef.position + lastmoveDir * handMoveAmount - HandsRef.right * handOffsetLeftRight;
+                    if (leftHandThrowable.IsAttached)
+                    {
+                        StartCoroutine(SetLeftHandTarget(newPos));
+                    }
+                    //Rechte Hand Setzen
+                    newPos = HandsRef.position + lastmoveDir * handMoveAmount + HandsRef.right * handOffsetLeftRight;
+                    if (rightHandThrowable.IsAttached)
+                    {
+                        StartCoroutine(SetRightHandTarget(newPos));
+                    }
                 }
             }
         }
@@ -129,6 +167,17 @@ public class IKTargetController : MonoBehaviour
         {
             StopAllCoroutines();
             isLeftFootMoving = false; isRightFootMoving = false;
+
+            //Linke Hand Setzen
+            if (leftHandThrowable.IsAttached)
+            {
+                StartCoroutine(SetLeftHandTarget(HandsRef.position -HandsRef.right * handOffsetLeftRight));
+            }
+            //Rechte Hand Setzen
+            if (rightHandThrowable.IsAttached)
+            {
+                StartCoroutine(SetRightHandTarget(HandsRef.position + HandsRef.right * handOffsetLeftRight));
+            }
 
             //Wenn beide Fusse noch da sind
             if (leftFootThrowable.IsAttached
@@ -153,9 +202,48 @@ public class IKTargetController : MonoBehaviour
         lastFrameMovDir = moveDir;
     }
 
+    IEnumerator SetLeftHandTarget(Vector3 newPos, float timeToStep = -1f)
+    {
+        if (timeToStep == -1)
+        {
+            timeToStep = timeForAStep * 2;
+        }
+
+        Vector3 origPos = leftHandTarget.position;
+        float elapse_time = 0;
+        while (elapse_time < timeToStep)
+        {
+            elapse_time += Time.deltaTime;
+            leftHandTarget.position = Vector3.Lerp(origPos, newPos, elapse_time / timeToStep);
+            yield return null;
+        }
+
+        leftHandTarget.position = newPos;
+        leftHandTarget.LookAt(leftHandTarget.position + newPos);
+    }
+
+    IEnumerator SetRightHandTarget(Vector3 newPos, float timeToStep = -1f)
+    {
+        if (timeToStep == -1)
+        {
+            timeToStep = timeForAStep * 2;
+        }
+
+        Vector3 origPos = rightHandTarget.position;
+        float elapse_time = 0;
+        while (elapse_time < timeToStep)
+        {
+            elapse_time += Time.deltaTime;
+            rightHandTarget.position = Vector3.Lerp(origPos, newPos, elapse_time / timeToStep);
+            yield return null;
+        }
+
+        rightHandTarget.position = newPos;
+        rightHandTarget.LookAt(rightHandTarget.position + newPos);
+    }
     IEnumerator SetLeftFootTarget(Vector3 newPos, float timeToStep = -1f)
     {
-        if(timeToStep == -1)
+        if (timeToStep == -1)
         {
             timeToStep = timeForAStep;
         }
@@ -217,6 +305,11 @@ public class IKTargetController : MonoBehaviour
         isLeftFootTurn = true;
     }
 
+    public float GetFeetOffset()
+    {
+        return feetOffsetLeftRight;
+    }
+
     public Transform GetIKTarget(IKTarget targetName)
     {
         switch (targetName)
@@ -229,6 +322,8 @@ public class IKTargetController : MonoBehaviour
                 return leftFootTarget;
             case IKTarget.RFoot:
                 return rightFootTarget;
+            case IKTarget.FeetRef:
+                return FeetRef;
             default:
                 return null;
         }
@@ -239,7 +334,8 @@ public class IKTargetController : MonoBehaviour
         LHand,
         RHand,
         LFoot,
-        RFoot
+        RFoot,
+        FeetRef
     }
 
     private void OnDrawGizmos()
