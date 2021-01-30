@@ -1,25 +1,29 @@
 using System;
 using Selection;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Throwing
 {
     public class Interactable : Selectable
     {
-        private Throwable connectedTrowable;
+        private Throwable connectedThrowable;
+        public UnityEvent InteractableEvent;
         public void UnlinkThrowable(Throwable projectile)
         {
-            connectedTrowable = null;
+            connectedThrowable = null;
             projectile.ConnectedInteractable = null; 
-            Debug.Log("linked "+projectile+"with "+this.name);
+            Debug.Log("Unlinked " + projectile + "from " + this.name);
         }
 
 
-        public void linkedThrowable(Throwable projectile)
+        public void LinkThrowable(Throwable projectile)
         {
             projectile.ConnectedInteractable = this;
-            connectedTrowable = null;
-            Debug.Log("Unlinked "+projectile+"from "+this.name);
+            connectedThrowable = projectile;
+            Debug.Log("Linked " + projectile + "with " + this.name);
+
+            Interact();
         }
 
         public void Interact()

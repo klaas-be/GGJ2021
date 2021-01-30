@@ -23,6 +23,11 @@ namespace Throwing
             parent = transform.parent;
         }
 
+        public void StartReattach()
+        {
+            StartCoroutine(Reattach());
+        }
+
         /// <summary>
         ///reattaches body part back to anchor
         /// </summary>

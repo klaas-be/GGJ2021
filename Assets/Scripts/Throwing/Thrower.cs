@@ -124,7 +124,7 @@ public class Thrower : MonoBehaviour
         if (Target.GetType() == typeof(Interactable))
         {
             Interactable s = (Interactable) Target;
-            s.linkedThrowable(Projectile);
+            s.LinkThrowable(Projectile);
         }
     }
 }
