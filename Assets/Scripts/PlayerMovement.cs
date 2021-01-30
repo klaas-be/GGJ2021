@@ -17,12 +17,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        characterController = this.GetComponent<CharacterController>();
+        mainCamera = Camera.main;
+        
+        characterController = this.GetComponent<CharacterController>();    
         Cursor.lockState = CursorLockMode.Locked;
     }
     // Update is called once per frame
     void Update()
     {
+
+      
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 

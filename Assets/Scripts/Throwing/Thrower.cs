@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Selection;
 using Throwing;
 using UnityEngine;
 
@@ -17,13 +18,15 @@ public class Thrower : MonoBehaviour
  
     void Throw()
     {
+        SetTarget();
         Projectile.Detach();
+        if (Target == null) return; 
         Projectile.MoveIkTargetToTarget(Target.transform.position);
         if(throwingCoroutine != null)
             StopCoroutine(throwingCoroutine);
         throwingCoroutine = StartCoroutine(SimulateProjectileCor());
     }
-
+    
     private void Unparent(Transform projectile)
     {
         projectile.parent = null;
@@ -52,6 +55,15 @@ public class Thrower : MonoBehaviour
     }
 
 
+    private void SetTarget()
+    {
+        if (!(SelectionManager.Selected is null))
+            Target = SelectionManager.Selected.transform;
+        else
+            Target = null; 
+    }
+
+    
     IEnumerator SimulateProjectileCor()
     {
         // Move projectile to the position of throwing object + add some offset if needed.

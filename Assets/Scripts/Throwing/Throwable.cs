@@ -38,7 +38,8 @@ namespace Throwing
             }
 
 
-            ikTarget.position = originalTargetPosition;
+            if(ikTarget != null)
+                ikTarget.position = originalTargetPosition;
             
             transform.parent = parent;
             transform.position = anchor.position;
@@ -54,6 +55,7 @@ namespace Throwing
 
         public void MoveIkTargetToTarget(Vector3 targetPosition)
         {
+            if (ikTarget == null) return; 
             originalTargetPosition = ikTarget.position;
             ikTarget.position = targetPosition;
 
