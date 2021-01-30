@@ -18,7 +18,8 @@ namespace DitzelGames.FastIK
         /// <summary>
         /// Target the chain should bent to
         /// </summary>
-        public Transform Target;
+        private Transform target;
+        public IKTargetController.IKTarget targetName;
         public Transform Pole;
 
         /// <summary>
@@ -53,6 +54,8 @@ namespace DitzelGames.FastIK
         // Start is called before the first frame update
         void Awake()
         {
+            IKTargetController ikController = GameObject.FindGameObjectWithTag("IKTargets").GetComponent<IKTargetController>();
+            target = ikController.GetIKTarget(targetName);
             Init();
         }
 
@@ -75,12 +78,12 @@ namespace DitzelGames.FastIK
             }
 
             //init target
-            if (Target == null)
+            if (target == null)
             {
-                Target = new GameObject(gameObject.name + " Target").transform;
-                SetPositionRootSpace(Target, GetPositionRootSpace(transform));
+                target = new GameObject(gameObject.name + " Target").transform;
+                SetPositionRootSpace(target, GetPositionRootSpace(transform));
             }
-            StartRotationTarget = GetRotationRootSpace(Target);
+            StartRotationTarget = GetRotationRootSpace(target);
 
 
             //init data
@@ -94,7 +97,7 @@ namespace DitzelGames.FastIK
                 if (i == Bones.Length - 1)
                 {
                     //leaf
-                    StartDirectionSucc[i] = GetPositionRootSpace(Target) - GetPositionRootSpace(current);
+                    StartDirectionSucc[i] = GetPositionRootSpace(target) - GetPositionRootSpace(current);
                 }
                 else
                 {
@@ -128,7 +131,7 @@ namespace DitzelGames.FastIK
 
         private void ResolveIK()
         {
-            if (Target == null)
+            if (target == null)
                 return;
 
             if (BonesLength.Length != ChainLength)
@@ -144,8 +147,8 @@ namespace DitzelGames.FastIK
             for (int i = 0; i < Bones.Length; i++)
                 Positions[i] = GetPositionRootSpace(Bones[i]);
 
-            var targetPosition = GetPositionRootSpace(Target);
-            var targetRotation = GetRotationRootSpace(Target);
+            var targetPosition = GetPositionRootSpace(target);
+            var targetRotation = GetRotationRootSpace(target);
 
             //1st is possible to reach?
             if ((targetPosition - GetPositionRootSpace(Bones[0])).sqrMagnitude >= CompleteLength * CompleteLength)
