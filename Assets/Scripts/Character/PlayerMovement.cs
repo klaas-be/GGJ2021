@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        
+
         characterController = this.GetComponent<CharacterController>();
         origCollHeight = characterController.height;
         origCollCenter = characterController.center;
@@ -53,8 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (to)
         {
-            characterController.height = crawlHeight;
-            characterController.center = CrawlCollCenterRef.position - this.transform.position;
+            StartCoroutine(StartCrawlMode(0.3f));
         }
         else
         {
@@ -65,6 +64,21 @@ public class PlayerMovement : MonoBehaviour
     public void SetNoLimbsMode(bool to)
     {
         hasNoLimbs = to;
+    }
+
+    IEnumerator StartCrawlMode(float timeToStart)
+    {
+        Debug.Log("StartCrawlMode");
+        float elapsed_time = 0f;
+        while (elapsed_time < timeToStart)
+        {
+            elapsed_time += Time.deltaTime;
+            characterController.center = Vector3.Lerp(origCollCenter, CrawlCollCenterRef.position - this.transform.position, elapsed_time / timeToStart);
+            characterController.height = Mathf.Lerp(origCollHeight, crawlHeight, elapsed_time / timeToStart);
+            yield return null;
+        }
+        characterController.height = crawlHeight;
+        characterController.center = CrawlCollCenterRef.position - this.transform.position;
     }
 
     IEnumerator ResetCrawlmode(float timeToReset)
