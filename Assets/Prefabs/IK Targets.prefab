@@ -239,8 +239,10 @@ MonoBehaviour:
   HandsRef: {fileID: 0}
   FeetRef: {fileID: 0}
   stepTriggerSize: 0.1
-  stepSize: 0.75
+  stepAmount: 1
+  handMoveAmount: 1.5
   feetOffsetLeftRight: 0.14
+  handOffsetLeftRight: 0.33
   timeForAStep: 0.12
   testnewPosLeft: {x: 1.5178105, y: 0.25999975, z: 16.016724}
   testnewPosRight: {x: 1.084998, y: 0.26, z: 14.279678}

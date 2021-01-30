@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeaaa396b2e774b40b341186dc527a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
   jumpHeight: 5
 --- !u!114 &1921079634
 MonoBehaviour:
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementScriptRef: {fileID: 1121033606}
   bodyPivotTransform: {fileID: 6404423726968055329}
-  leanAngle: 30
+  leanAngle: 40
 --- !u!1 &624319898873114875
 GameObject:
   m_ObjectHideFlags: 0
