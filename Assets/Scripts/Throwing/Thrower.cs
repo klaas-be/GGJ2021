@@ -2,10 +2,10 @@
 using Selection;
 using Throwing;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Thrower : MonoBehaviour
 {
-
     public Anchor throwOrigin; 
     public Selectable Target;
     public float firingAngle = 45.0f;
@@ -14,7 +14,11 @@ public class Thrower : MonoBehaviour
     public KeyCode InteractionKey;
 
     public Throwable Projectile;
-
+    
+    [Header("Events")]
+    public UnityEvent StartDetachEvent;
+    public UnityEvent StartAttachEvent;
+    public UnityEvent EndAttachEvent;
 
     private Coroutine throwingCoroutine; 
  
@@ -22,11 +26,12 @@ public class Thrower : MonoBehaviour
     {
         SetTarget();
         if (Target == null) return; 
-        Projectile.Detach();
+        Projectile.Detach(EndAttachEvent);
         Projectile.MoveIkTargetToTarget(Target.transform.position);
         if(throwingCoroutine != null)
             StopCoroutine(throwingCoroutine);
         throwingCoroutine = StartCoroutine(SimulateProjectileCor());
+        StartDetachEvent.Invoke();
     }
     
     private void Unparent(Transform projectile)
@@ -71,7 +76,7 @@ public class Thrower : MonoBehaviour
             StopCoroutine(throwingCoroutine);
         
         StartCoroutine(Projectile.Reattach());
-      
+        StartAttachEvent.Invoke();
     }
 
 

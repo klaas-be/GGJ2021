@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Throwing
 {
@@ -15,8 +16,9 @@ namespace Throwing
         public Interactable ConnectedInteractable { get; set; }
 
         private Transform parent;
-        private Vector3 originalTargetPosition; 
-        
+        private Vector3 originalTargetPosition;
+
+        private UnityEvent endReattachEvent;
 
         private void Start()
         {
@@ -33,7 +35,6 @@ namespace Throwing
         /// </summary>
         public IEnumerator Reattach()
         {
-            Debug.Log(""+name+"is Attached: "+IsAttached);
             if (IsAttached) yield  break; 
            
 
@@ -52,15 +53,17 @@ namespace Throwing
             
             transform.parent = parent;
             transform.position = anchor.position;
-            
+
+            endReattachEvent.Invoke();
         }
 
         /// <summary>
         /// Unparrent the game object
         /// </summary>
-        public void Detach()
+        public void Detach(UnityEvent endEvent)
         {
             transform.parent = null;
+            endReattachEvent = endEvent;
         }
 
         public void MoveIkTargetToTarget(Vector3 targetPosition)
