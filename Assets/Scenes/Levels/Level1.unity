@@ -128,7 +128,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh254402
+  m_Name: pb_Mesh40994
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 249454446}
   m_Layer: 0
   m_Name: OuterWall
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2161,7 +2161,7 @@ GameObject:
   - component: {fileID: 438918402}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2566,7 +2566,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh254348
+  m_Name: pb_Mesh40942
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2738,7 +2738,7 @@ GameObject:
   - component: {fileID: 537190377}
   m_Layer: 0
   m_Name: InnerWall
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4009,6 +4009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
         type: 3}
+      propertyPath: m_TagString
+      value: level
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -4111,6 +4116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gitter (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
+        type: 3}
+      propertyPath: m_TagString
+      value: level
       objectReference: {fileID: 0}
     - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
         type: 3}
@@ -4250,6 +4260,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gitter (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
+        type: 3}
+      propertyPath: m_TagString
+      value: level
       objectReference: {fileID: 0}
     - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
         type: 3}
@@ -4516,7 +4536,7 @@ GameObject:
   - component: {fileID: 1465257573}
   m_Layer: 0
   m_Name: Arch
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6474,7 +6494,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh254376
+  m_Name: pb_Mesh40968
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6670,7 +6690,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh254476
+  m_Name: pb_Mesh41058
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6838,7 +6858,7 @@ GameObject:
   - component: {fileID: 1896640591}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6884,6 +6904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
+        type: 3}
+      propertyPath: m_TagString
+      value: level
       objectReference: {fileID: 0}
     - target: {fileID: 1904403718623324392, guid: 7e1ac15a28885ef4095ae20b532d0124,
         type: 3}
@@ -8146,7 +8171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48951621, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17121497
+      value: 0.17121495
       objectReference: {fileID: 0}
     - target: {fileID: 48951621, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8182,15 +8207,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310439157, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.01818946
+      value: 0.018189445
       objectReference: {fileID: 0}
     - target: {fileID: 310439157, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000039371826
+      value: 0.000000022536618
       objectReference: {fileID: 0}
     - target: {fileID: 310439157, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000014923855
+      value: -0.000000008542486
       objectReference: {fileID: 0}
     - target: {fileID: 1678156578, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8202,7 +8227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1678156578, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.000000029802322
       objectReference: {fileID: 0}
     - target: {fileID: 1678156578, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8226,15 +8251,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2031935488, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.018141463
+      value: -0.018141478
       objectReference: {fileID: 0}
     - target: {fileID: 2031935488, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016281827
+      value: 0.000000016300227
       objectReference: {fileID: 0}
     - target: {fileID: 2031935488, guid: 8033d1f820ad0dd418ecab19ea921d07, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000005503951
+      value: -0.000000005510172
       objectReference: {fileID: 0}
     - target: {fileID: 3238226646277150818, guid: 8033d1f820ad0dd418ecab19ea921d07,
         type: 3}
@@ -8295,6 +8320,16 @@ PrefabInstance:
         type: 3}
       propertyPath: timeForAStep
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751933568971123286, guid: 8033d1f820ad0dd418ecab19ea921d07,
+        type: 3}
+      propertyPath: InteractionKey
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792455770384893393, guid: 8033d1f820ad0dd418ecab19ea921d07,
+        type: 3}
+      propertyPath: InteractionKey
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7390269321105965781, guid: 8033d1f820ad0dd418ecab19ea921d07,
         type: 3}
