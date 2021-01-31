@@ -24,6 +24,12 @@ public class SeelenManager : MonoBehaviour
         UpdateSoulText();
     }
 
+    public void ResetSouls()
+    {
+        soulParts = 0;
+        UpdateSoulText();
+    }
+
     public void AddSoul()
     {
         soulParts++;

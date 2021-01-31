@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     const string MAIN_MENU = "MainMenu";
     const string UEBER_LEVEL = "Ueberlevel";
     const string LEVEL1 = "Level1";
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject PauseGameButtonRef;
     [SerializeField] GameObject MiddleButtonRef;
     [SerializeField] GameObject HowToPlayButtonRef;
+    [SerializeField] GameObject GameWonScreen;
 
     [SerializeField] private GameState currentGameState = GameState.MainMenu;
 
@@ -31,13 +34,22 @@ public class GameManager : MonoBehaviour
         MainMenu,
         Paused,
         Playing,
-        HowToPlay
+        HowToPlay,
+        GameWon
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     private void Start()
     {
         currentGameState = GameState.MainMenu;
-        UpdateButtonsState();
+        UpdateUIState();
     }
 
     private void Update()
@@ -48,7 +60,7 @@ public class GameManager : MonoBehaviour
                 currentGameState = GameState.Paused;
             else if (currentGameState == GameState.Paused)
                 currentGameState = GameState.Playing;
-            UpdateButtonsState();
+            UpdateUIState();
         }
     }
 
@@ -57,7 +69,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start Game");
 
         currentGameState = GameState.Playing;
-        UpdateButtonsState();
+        UpdateUIState();
 
         SceneManager.LoadScene(UEBER_LEVEL);
         SceneManager.LoadSceneAsync(LEVEL1, LoadSceneMode.Additive);
@@ -74,14 +86,14 @@ public class GameManager : MonoBehaviour
         else if (currentGameState == GameState.Paused)
             currentGameState = GameState.Playing;        
 
-        UpdateButtonsState();
+        UpdateUIState();
     }
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(MAIN_MENU);
         currentGameState = GameState.MainMenu;
-        UpdateButtonsState();
+        UpdateUIState();
+        SceneManager.LoadScene(MAIN_MENU);
     }
 
     public void HowToPlay()
@@ -91,10 +103,24 @@ public class GameManager : MonoBehaviour
         else if (currentGameState == GameState.HowToPlay)
             currentGameState = GameState.MainMenu;
 
-        UpdateButtonsState();
+        UpdateUIState();
     }
 
-    private void UpdateButtonsState()
+    public void GameWon()
+    {
+        currentGameState = GameState.GameWon;
+        UpdateUIState();
+        SceneManager.LoadScene(MAIN_MENU);
+    }
+
+    public void ResetGame()
+    {
+        currentGameState = GameState.MainMenu;
+        SeelenManager.instance.ResetSouls();
+        UpdateUIState();
+    }
+
+    private void UpdateUIState()
     {
         switch (currentGameState)
         {
@@ -108,6 +134,7 @@ public class GameManager : MonoBehaviour
                 MiddleButtonRef.SetActive(false);
                 HowToPlayButtonRef.SetActive(true);
                 HowToPlayInfoRef.SetActive(false);
+                GameWonScreen.SetActive(false);
 
                 ButtonsRef.SetActive(true);
                 break;
@@ -119,6 +146,7 @@ public class GameManager : MonoBehaviour
                 StartGameButtonRef.SetActive(false);
                 PauseGameButtonRef.SetActive(true);
                 MiddleButtonRef.SetActive(true);
+                GameWonScreen.SetActive(false);
 
                 ButtonsRef.SetActive(true);
                 break;
@@ -128,14 +156,24 @@ public class GameManager : MonoBehaviour
                 HowToPlayInfoRef.SetActive(false);
                 SoulTextsRef.SetActive(true);
                 ButtonsRef.SetActive(false);
+                GameWonScreen.SetActive(false);
                 break;
             case GameState.HowToPlay:
                 Cursor.lockState = CursorLockMode.None;
                 HowToPlayButtonRef.SetActive(true);
                 HowToPlayInfoRef.SetActive(true);
                 ButtonsRef.SetActive(false);
+                GameWonScreen.SetActive(false);
+                SoulTextsRef.SetActive(false);
                 break;
-
+            case GameState.GameWon:
+                Cursor.lockState = CursorLockMode.None;
+                HowToPlayButtonRef.SetActive(false);
+                HowToPlayInfoRef.SetActive(false);
+                ButtonsRef.SetActive(false); 
+                GameWonScreen.SetActive(true);
+                SoulTextsRef.SetActive(true);
+                break;
         }
     }
 
