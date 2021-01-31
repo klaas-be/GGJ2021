@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     const string LEVEL2 = "Level2";
     const string LEVEL3 = "Level3";
     const string LEVEL4 = "Level4";
+    const string LEVEL5 = "Level5";
 
     [Header("Refs")]
     [SerializeField] GameObject SoulTextsRef;
@@ -59,10 +60,11 @@ public class GameManager : MonoBehaviour
         UpdateButtonsState();
 
         SceneManager.LoadScene(UEBER_LEVEL);
-        SceneManager.LoadScene(LEVEL1, LoadSceneMode.Additive);
-        SceneManager.LoadScene(LEVEL2, LoadSceneMode.Additive);
-        SceneManager.LoadScene(LEVEL3, LoadSceneMode.Additive);
-        SceneManager.LoadScene(LEVEL4, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(LEVEL1, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(LEVEL2, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(LEVEL3, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(LEVEL4, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(LEVEL5, LoadSceneMode.Additive);
     }
 
     public void SetPause(bool pauseState)

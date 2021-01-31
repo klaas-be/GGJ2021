@@ -23,13 +23,16 @@ namespace Throwing
 
         private UnityEvent endReattachEvent;
 
+        public AudioClip attachAudio;
+        public AudioClip detachAudio; 
+
         private void Start()
         {
             parent = transform.parent;
             if (GravityOnImpact)
             {
-               rb =  gameObject.AddComponent<Rigidbody>();
-               rb.useGravity = false;
+                rb = gameObject.AddComponent<Rigidbody>();
+                rb.useGravity = false;
                coll = gameObject.GetComponent<Collider>();
                if (coll == null)
                {
@@ -62,7 +65,8 @@ namespace Throwing
 
             bool wasGravityOnImpact = GravityOnImpact;
 
-            rb.isKinematic = true;
+            if (rb != null)
+                rb.isKinematic = true;
 
 
             GravityOnImpact = false;
@@ -79,7 +83,8 @@ namespace Throwing
             if(ikTarget != null)
                 ikTarget.position = originalTargetPosition;
 
-            rb.useGravity = false; 
+            if (rb != null)
+                rb.useGravity = false; 
             
             if(wasGravityOnImpact)
                 GravityOnImpact = true;
@@ -96,6 +101,8 @@ namespace Throwing
 
             if (rb != null)
                 rb.isKinematic = false;
+            
+            AudioSource.PlayClipAtPoint(attachAudio,transform.position);
         }
 
         /// <summary>
@@ -105,6 +112,8 @@ namespace Throwing
         {
             transform.parent = null;
             endReattachEvent = _endReattachEvent;
+            AudioSource.PlayClipAtPoint(detachAudio, transform.position);
+
         }
 
         public void MoveIkTargetToTarget(Vector3 targetPosition)
