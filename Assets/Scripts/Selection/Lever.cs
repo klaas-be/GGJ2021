@@ -35,7 +35,7 @@ namespace Throwing
             while (elapsed_time < timeToSwitch)
             {
                 elapsed_time += Time.deltaTime;
-                if (toState)
+                if (!toState)
                 {
                     leverPivot.localRotation = Quaternion.Lerp(Quaternion.Euler(0,0,-45), 
                                             Quaternion.Euler(0, 0, 45), 

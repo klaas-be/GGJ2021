@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6737938232715283940}
   - component: {fileID: 1541951717376430820}
   - component: {fileID: 3079114479910241558}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,9 +88,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8123394287956429118}
-  m_Layer: 0
+  - component: {fileID: 3003941314012058827}
+  m_Layer: 2
   m_Name: Hoop
-  m_TagString: Untagged
+  m_TagString: IKTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +103,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8932829096273302404}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.1285658, y: 1.868, z: 0.706}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -110,3 +111,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3003941314012058827
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8932829096273302404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.53896505, y: 0.8338723, z: 0.19919579}
+  m_Center: {x: -0.0021542013, y: 0.29672313, z: -0.20714764}

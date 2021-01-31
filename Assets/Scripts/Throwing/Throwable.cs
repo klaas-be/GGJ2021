@@ -28,8 +28,8 @@ namespace Throwing
             parent = transform.parent;
             if (GravityOnImpact)
             {
-               rb =  gameObject.AddComponent<Rigidbody>();
-               rb.useGravity = false;
+                rb = gameObject.AddComponent<Rigidbody>();
+                rb.useGravity = false;
                coll = gameObject.GetComponent<Collider>();
                if (coll == null)
                {
@@ -62,7 +62,8 @@ namespace Throwing
 
             bool wasGravityOnImpact = GravityOnImpact;
 
-            rb.isKinematic = true;
+            if (rb != null)
+                rb.isKinematic = true;
 
 
             GravityOnImpact = false;
@@ -79,7 +80,8 @@ namespace Throwing
             if(ikTarget != null)
                 ikTarget.position = originalTargetPosition;
 
-            rb.useGravity = false; 
+            if (rb != null)
+                rb.useGravity = false; 
             
             if(wasGravityOnImpact)
                 GravityOnImpact = true;

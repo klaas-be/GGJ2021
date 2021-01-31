@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2700094408491659610}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 5641378957636720332}
   - component: {fileID: 570965702}
   - component: {fileID: 570965703}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,12 +262,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 888f818ffa61c1e4ab511c9b5f78016c,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 951011102456138778, guid: 888f818ffa61c1e4ab511c9b5f78016c,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6741210398040927171, guid: 888f818ffa61c1e4ab511c9b5f78016c,
         type: 3}
@@ -352,12 +352,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 947ad74aa68f2234bb3019a01998464d,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 951011102456138778, guid: 947ad74aa68f2234bb3019a01998464d,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6741210398040927171, guid: 947ad74aa68f2234bb3019a01998464d,
         type: 3}
