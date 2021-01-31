@@ -13,7 +13,8 @@ namespace Selection
 
         private void Start()
         {
-            defaultMaterials = rendererOnChange?.sharedMaterials;
+            if(rendererOnChange != null)
+                defaultMaterials = rendererOnChange.sharedMaterials;
         }
 
         public void Select()
@@ -28,7 +29,8 @@ namespace Selection
 
         private void SetMaterials(Material[] materials)
         {
-            rendererOnChange.sharedMaterials = materials;
+            if(rendererOnChange != null)
+                rendererOnChange.sharedMaterials = materials;
         }
     }
 }

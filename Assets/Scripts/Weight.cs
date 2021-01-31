@@ -10,6 +10,7 @@ namespace DefaultNamespace
     {
 
         public float influenceRadius;
+        public Throwable throwable;
 
         private Plate pushedPlate; 
         private void Update()
@@ -27,13 +28,13 @@ namespace DefaultNamespace
                     if (pushedPlate == null)
                     {
                         pushedPlate = interactable;
-                        interactable.Interact();
+                        pushedPlate.LinkThrowable(throwable);
                     }
                 }
 
                 if (foundPlate == false && pushedPlate !=null)
                 {
-                    pushedPlate.Interact();
+                    pushedPlate.UnlinkThrowable(throwable);
                     pushedPlate = null; 
                 }
             }
