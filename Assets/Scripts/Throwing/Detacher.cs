@@ -18,7 +18,7 @@ namespace Throwing
         {
             if (Input.GetKeyDown(detachKey))
             {
-                throwable.Detach(EndAttachEvent);
+                throwable.Detach();
                 StartDetachEvent.Invoke();
             }
 
