@@ -12,6 +12,7 @@ public class Thrower : MonoBehaviour
     public float gravityScale = 1f;
     public KeyCode ThrowKey;
     public KeyCode InteractionKey;
+    public bool canLandEverywhere = false; 
 
     public Throwable Projectile;
 
@@ -77,10 +78,45 @@ public class Thrower : MonoBehaviour
 
     private void SetTarget()
     {
-        if (!(SelectionManager.Selected is null))
-            Target = SelectionManager.Selected;
+        if (canLandEverywhere)
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+           Vector3 worldPoint = new Vector3(); 
+            if (Physics.Raycast(ray, out hit))
+            {
+                worldPoint = hit.point;
+            }
+            else
+            {
+                Target = null;
+                return;
+            }
+            
+            var newTargetObject = new GameObject("TempTarget");
+            newTargetObject.transform.position = worldPoint;
+            Target = newTargetObject.AddComponent<Selectable>();
+            newTargetObject.AddComponent<MeshRenderer>();
+
+        }
         else
-            Target = null; 
+        {
+            if (!(SelectionManager.Selected is null))
+                Target = SelectionManager.Selected;
+            else
+            {
+                if (Target != null)
+                {
+                    if (Target.name == "TempTarget")
+                    {
+                        Destroy(Target);
+                    }
+
+                    Target = null;
+                }
+            }
+        }
     }
 
     
