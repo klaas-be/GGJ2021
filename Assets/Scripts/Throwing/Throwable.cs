@@ -23,6 +23,9 @@ namespace Throwing
 
         private UnityEvent endReattachEvent;
 
+        public AudioClip attachAudio;
+        public AudioClip detachAudio; 
+
         private void Start()
         {
             parent = transform.parent;
@@ -98,6 +101,8 @@ namespace Throwing
 
             if (rb != null)
                 rb.isKinematic = false;
+            
+            AudioSource.PlayClipAtPoint(attachAudio,transform.position);
         }
 
         /// <summary>
@@ -107,6 +112,8 @@ namespace Throwing
         {
             transform.parent = null;
             endReattachEvent = _endReattachEvent;
+            AudioSource.PlayClipAtPoint(detachAudio, transform.position);
+
         }
 
         public void MoveIkTargetToTarget(Vector3 targetPosition)
