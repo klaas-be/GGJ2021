@@ -37,14 +37,14 @@ namespace Throwing
                 elapsed_time += Time.deltaTime;
                 if (state)
                 {
-                    leverPivot.rotation = Quaternion.Lerp(Quaternion.Euler(0,0,225), 
-                                            Quaternion.Euler(0, 0, 315), 
+                    leverPivot.localRotation = Quaternion.Lerp(Quaternion.Euler(0,0,-45), 
+                                            Quaternion.Euler(0, 0, 45), 
                                             elapsed_time / timeToSwitch);
                 }
                 else
                 {
-                    leverPivot.rotation = Quaternion.Lerp(Quaternion.Euler(0, 0, 315),
-                                            Quaternion.Euler(0, 0, 225),
+                    leverPivot.localRotation = Quaternion.Lerp(Quaternion.Euler(0, 0, 45),
+                                            Quaternion.Euler(0, 0, -45),
                                             elapsed_time / timeToSwitch);
                 }
                 yield return null;

@@ -29,24 +29,25 @@ public class PlayerMovement : MonoBehaviour
         characterController = this.GetComponent<CharacterController>();
         origCollHeight = characterController.height;
         origCollCenter = characterController.center;
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
     // Update is called once per frame
     void Update()
     {
-        camRot = mainCamera.transform.eulerAngles;
-        camRot.x = 0;
-        camRot.z = 0;
-        transform.rotation = Quaternion.Euler(camRot);
+        if (mainCamera != null)
+        {
+            camRot = mainCamera.transform.eulerAngles;
+            camRot.x = 0;
+            camRot.z = 0;
+            transform.rotation = Quaternion.Euler(camRot);
 
-        motion = Quaternion.Euler(camRot) * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        motion = motion * (speed * Time.deltaTime);
-        motion.y = gravityValue * Time.deltaTime;
-        if (!hasNoLimbs)
-            characterController.Move(motion);
-        else
-            characterController.Move(new Vector3(0, gravityValue * Time.deltaTime, 0));        
+            motion = Quaternion.Euler(camRot) * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            motion = motion * (speed * Time.deltaTime);
+            motion.y = gravityValue * Time.deltaTime;
+            if (!hasNoLimbs)
+                characterController.Move(motion);
+            else
+                characterController.Move(new Vector3(0, gravityValue * Time.deltaTime, 0));
+        }     
     }
 
     public void SetCrawlmode(bool to)

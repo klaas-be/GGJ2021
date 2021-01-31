@@ -26,7 +26,8 @@ namespace Selection
 
         private void SetMaterials(Material[] materials)
         {
-            GetComponent<Renderer>().sharedMaterials = materials;
+            if(GetComponent<Renderer>() != null)
+                GetComponent<Renderer>().sharedMaterials = materials;
         }
     }
 }

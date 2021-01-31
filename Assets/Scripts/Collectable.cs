@@ -28,6 +28,7 @@ namespace DefaultNamespace
             var distance = Vector3.Distance(transform.position, Player.transform.position);
             if (distance <= 0.01f)
             {
+                SeelenManager.instance.AddSoul();
                 this.gameObject.SetActive(false);
             }
         }
