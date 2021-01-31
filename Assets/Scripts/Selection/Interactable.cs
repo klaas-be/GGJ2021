@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace Throwing
-{
-    public class Interactable : Selectable
+{    public class Interactable : Selectable
     {
         private Throwable connectedThrowable;
         public UnityEvent InteractableEvent;
+
+        protected bool state = false;
+
         public void UnlinkThrowable(Throwable projectile)
         {
             connectedThrowable = null;
@@ -25,10 +27,13 @@ namespace Throwing
 
             Interact();
         }
-
-        public void Interact()
+        public virtual void Interact()
         {
-            throw new NotImplementedException();
+        }
+
+        public bool GetState()
+        {
+            return state;
         }
     }
 }
