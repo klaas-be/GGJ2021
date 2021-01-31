@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2700094408491659610}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5641378957636720332}
   - component: {fileID: 570965702}
   - component: {fileID: 570965703}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedMaterials: []
+  rendererOnChange: {fileID: 3939944199557392886}
   InteractableEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -163,6 +164,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeverModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 888f818ffa61c1e4ab511c9b5f78016c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: 888f818ffa61c1e4ab511c9b5f78016c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6741210398040927171, guid: 888f818ffa61c1e4ab511c9b5f78016c,
         type: 3}
@@ -244,6 +255,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 947ad74aa68f2234bb3019a01998464d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: 947ad74aa68f2234bb3019a01998464d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6741210398040927171, guid: 947ad74aa68f2234bb3019a01998464d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -254,6 +275,12 @@ PrefabInstance:
 --- !u!4 &7830158869318985182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 947ad74aa68f2234bb3019a01998464d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7719426480267887157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3939944199557392886 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6741210398040927171, guid: 947ad74aa68f2234bb3019a01998464d,
     type: 3}
   m_PrefabInstance: {fileID: 7719426480267887157}
   m_PrefabAsset: {fileID: 0}
