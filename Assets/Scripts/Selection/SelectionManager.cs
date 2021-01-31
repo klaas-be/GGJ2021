@@ -6,6 +6,18 @@ namespace Selection
     public class SelectionManager : MonoBehaviour
     {
         public static Selectable Selected { get; private set; }
+        public  LayerMask RaycastIgnoreLayer;
+        private static int layerMask; 
+
+        private void Start()
+        {
+            //int lm = RaycastIgnoreLayer;
+            //invert layer mask
+            //layerMask = 1 << lm; 
+           // layerMask = ~layerMask;
+
+           layerMask = RaycastIgnoreLayer;
+        }
 
         private void Update()
         {
@@ -42,7 +54,7 @@ namespace Selection
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (!Physics.Raycast(ray, out hit))
+            if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
                 selectionComponent = null;
                 return true;
