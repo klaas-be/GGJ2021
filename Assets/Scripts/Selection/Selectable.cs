@@ -6,12 +6,15 @@ namespace Selection
     public class Selectable : MonoBehaviour
     {
         [SerializeField] private Material[] selectedMaterials;
+        [SerializeField] private Renderer rendererOnChange;
+        
 
         private Material[] defaultMaterials;
 
         private void Start()
         {
-            defaultMaterials = GetComponent<Renderer>()?.sharedMaterials;
+            if(rendererOnChange != null)
+                defaultMaterials = rendererOnChange.sharedMaterials;
         }
 
         public void Select()
@@ -26,8 +29,8 @@ namespace Selection
 
         private void SetMaterials(Material[] materials)
         {
-            if(GetComponent<Renderer>() != null)
-                GetComponent<Renderer>().sharedMaterials = materials;
+            if(rendererOnChange != null)
+                rendererOnChange.sharedMaterials = materials;
         }
     }
 }

@@ -9,13 +9,17 @@ namespace Throwing
         private Throwable connectedThrowable;
         public UnityEvent InteractableEvent;
 
+        public Throwable ConnectedThrowable => connectedThrowable; 
+
         protected bool state = false;
 
         public void UnlinkThrowable(Throwable projectile)
         {
+            Interact();
             connectedThrowable = null;
             projectile.ConnectedInteractable = null; 
             Debug.Log("Unlinked " + projectile + "from " + this.name);
+           
         }
 
 

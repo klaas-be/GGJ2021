@@ -66,11 +66,12 @@ public class Thrower : MonoBehaviour
         if (Target != null)
         {
 
-            if (Target.GetType() == typeof(Interactable))
+            if (Target.GetType().IsSubclassOf(typeof(Interactable)))
             {
                 var s = (Interactable) Target;
                 s.UnlinkThrowable(Projectile);
             }
+            
         }
 
         if(throwingCoroutine != null)
@@ -162,7 +163,7 @@ public class Thrower : MonoBehaviour
             yield return null;
         }
 
-        if (Target.GetType() == typeof(Interactable))
+        if (Target.GetType().IsSubclassOf(typeof(Interactable)))
         {
             Interactable s = (Interactable) Target;
             s.LinkThrowable(Projectile);
