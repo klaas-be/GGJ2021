@@ -40,6 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5991852054408326328}
+  - component: {fileID: 7030421578124136226}
+  - component: {fileID: 3617570276328140959}
   m_Layer: 0
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -63,6 +65,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7030421578124136226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466222447502296520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.1, z: 0.7}
+  m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!114 &3617570276328140959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466222447502296520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6debb2c8976c86f46956a2f46fbde2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedMaterials: []
+  InteractableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  platePivot: {fileID: 1743351932362770634}
+  plateDipDown: 0.03
+  timeToSwitch: 0.5
+  DebugToggle: 0
 --- !u!1001 &1995076541517061042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,6 +109,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 529bd93aff1a38f4b840f3c23df6ba65,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 529bd93aff1a38f4b840f3c23df6ba65,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 529bd93aff1a38f4b840f3c23df6ba65,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 529bd93aff1a38f4b840f3c23df6ba65,
         type: 3}
@@ -154,6 +204,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 61b7673570ec1b84e94d828d007d2467,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 61b7673570ec1b84e94d828d007d2467,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 61b7673570ec1b84e94d828d007d2467,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61b7673570ec1b84e94d828d007d2467,
         type: 3}

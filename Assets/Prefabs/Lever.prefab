@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840434667456518807}
-  m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: -0, y: 0, z: -0.43161336, w: -0.9020588}
   m_LocalPosition: {x: 0, y: 0.0105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1405644518502263125}
   m_Father: {fileID: 5641378957636720332}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 411.14}
 --- !u!1 &8068054307734574660
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5641378957636720332}
+  - component: {fileID: 570965702}
+  - component: {fileID: 570965703}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -56,13 +58,45 @@ Transform:
   m_GameObject: {fileID: 8068054307734574660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 7830158869318985182}
   - {fileID: 2700094408491659610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &570965702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8068054307734574660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.3, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &570965703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8068054307734574660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd6a9655c13c944faf7aef420a3557d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedMaterials: []
+  InteractableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  leverPivot: {fileID: 2700094408491659610}
+  timeToSwitch: 1
+  DebugToggle: 0
 --- !u!1001 &1444357234236591806
 PrefabInstance:
   m_ObjectHideFlags: 0
