@@ -11,7 +11,7 @@ namespace Selection
 
         private void Start()
         {
-            defaultMaterials = GetComponent<Renderer>().sharedMaterials;
+            defaultMaterials = GetComponent<Renderer>()?.sharedMaterials;
         }
 
         public void Select()

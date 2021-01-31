@@ -17,6 +17,8 @@ namespace Throwing
 
         private Transform parent;
         private Vector3 originalTargetPosition;
+        private Rigidbody rb;
+        private Collider coll;
 
         private UnityEvent endReattachEvent;
 
@@ -35,8 +37,14 @@ namespace Throwing
         /// </summary>
         public IEnumerator Reattach()
         {
-            if (IsAttached) yield  break; 
+            Debug.Log(""+name+"is Attached: "+IsAttached);
+            if (rb != null)
+            {
+                rb.useGravity = false;
+            }
            
+            if (IsAttached) yield  break;
+            
 
             float elapse_time = 0;
 
@@ -55,15 +63,20 @@ namespace Throwing
             transform.position = anchor.position;
 
             endReattachEvent.Invoke();
+            transform.rotation = anchor.rotation;
+
+
+            coll.isTrigger = true;
+            rb.isKinematic = false;
+
         }
 
         /// <summary>
         /// Unparrent the game object
         /// </summary>
-        public void Detach(UnityEvent endEvent)
+        public void Detach()
         {
             transform.parent = null;
-            endReattachEvent = endEvent;
         }
 
         public void MoveIkTargetToTarget(Vector3 targetPosition)
