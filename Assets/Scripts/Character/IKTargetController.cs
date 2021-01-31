@@ -25,7 +25,7 @@ public class IKTargetController : MonoBehaviour
     [Header("Settings")]
     public float angleAfterTurningStandingStillUpdateFeetAndArms = 60f;
     public float stepTriggerSize = 1.2f;
-    public float stepAmount = 1f;
+    public float stepLength = 1f;
     public float handMoveAmount = 1.5f;
     public float feetOffsetLeftRight = 0.3f;
     public float handOffsetLeftRight = 0.5f;
@@ -79,7 +79,7 @@ public class IKTargetController : MonoBehaviour
                      && Vector3.Dot(lastmoveDir, leftFootTarget.position - FeetRef.position) < 0)
                     {
                         //linken Fuss setzen
-                        Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount - FeetRef.right * feetOffsetLeftRight;
+                        Vector3 newPos = FeetRef.position + lastmoveDir * stepLength - FeetRef.right * feetOffsetLeftRight;
                         if (!isLeftFootMoving)
                             StartCoroutine(SetLeftFootTarget(newPos));
 
@@ -99,7 +99,7 @@ public class IKTargetController : MonoBehaviour
                      && Vector3.Dot(lastmoveDir, leftFootTarget.position - FeetRef.position) < 0)
                     {
                         //rechten Fuss setzen
-                        Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount + FeetRef.right * feetOffsetLeftRight;
+                        Vector3 newPos = FeetRef.position + lastmoveDir * stepLength + FeetRef.right * feetOffsetLeftRight;
                         if (!isRightFootMoving)
                             StartCoroutine(SetRightFootTarget(newPos));
 
@@ -116,11 +116,11 @@ public class IKTargetController : MonoBehaviour
             else if (!leftFootThrowable.IsAttached && rightFootThrowable.IsAttached)
             {
                 //rechten Fuss bewegen
-                if (Vector3.Distance(FeetRef.position, rightFootTarget.position) > stepAmount * 0.75f
+                if (Vector3.Distance(FeetRef.position, rightFootTarget.position) > stepLength * 0.75f
                      && Vector3.Dot(lastmoveDir, rightFootTarget.position - FeetRef.position) < 0)
                 {
                     //rechten Fuss setzen
-                    Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount;
+                    Vector3 newPos = FeetRef.position + lastmoveDir * stepLength;
                     if (!isRightFootMoving)
                         StartCoroutine(SetRightFootTarget(newPos));
 
@@ -142,11 +142,11 @@ public class IKTargetController : MonoBehaviour
             else if (leftFootThrowable.IsAttached && !rightFootThrowable.IsAttached)
             {
                 //linken Fuss bewegen
-                if (Vector3.Distance(FeetRef.position, leftFootTarget.position) > stepAmount * 0.75f
+                if (Vector3.Distance(FeetRef.position, leftFootTarget.position) > stepLength * 0.75f
                      && Vector3.Dot(lastmoveDir, leftFootTarget.position - FeetRef.position) < 0)
                 {
                     //linken Fuss setzen
-                    Vector3 newPos = FeetRef.position + lastmoveDir * stepAmount;
+                    Vector3 newPos = FeetRef.position + lastmoveDir * stepLength;
                     if (!isLeftFootMoving)
                         StartCoroutine(SetLeftFootTarget(newPos));
 

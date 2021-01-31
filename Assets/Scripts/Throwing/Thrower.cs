@@ -27,7 +27,7 @@ public class Thrower : MonoBehaviour
     {
         SetTarget();
         if (Target == null) return; 
-        Projectile.Detach();
+        Projectile.Detach(EndAttachEvent);
         Projectile.MoveIkTargetToTarget(Target.transform.position);
         if(throwingCoroutine != null)
             StopCoroutine(throwingCoroutine);

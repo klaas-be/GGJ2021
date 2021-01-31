@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3937197282138345027}
   - component: {fileID: 786760138151397923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37a55d7744561474fa1bac594693bef7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: 37a55d7744561474fa1bac594693bef7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3078023919453430577, guid: 37a55d7744561474fa1bac594693bef7,
         type: 3}

@@ -25,6 +25,7 @@ namespace Throwing
         private void Start()
         {
             parent = transform.parent;
+            coll = this.GetComponent<Collider>();
         }
 
         public void StartReattach()
@@ -66,17 +67,20 @@ namespace Throwing
             transform.rotation = anchor.rotation;
 
 
-            coll.isTrigger = true;
-            rb.isKinematic = false;
+            if (coll != null)
+                coll.isTrigger = true;
 
+            if (rb != null)
+                rb.isKinematic = false;
         }
 
         /// <summary>
         /// Unparrent the game object
         /// </summary>
-        public void Detach()
+        public void Detach(UnityEvent _endReattachEvent)
         {
             transform.parent = null;
+            endReattachEvent = _endReattachEvent;
         }
 
         public void MoveIkTargetToTarget(Vector3 targetPosition)
