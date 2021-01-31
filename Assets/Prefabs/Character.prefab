@@ -465,6 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 281954906301076735}
   - component: {fileID: 916784553}
+  - component: {fileID: 1674403302613275373}
   m_Layer: 0
   m_Name: Head Pivot
   m_TagString: Untagged
@@ -501,6 +502,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 281954905013488361}
   ikTarget: {fileID: 0}
+  GravityOnImpact: 1
+--- !u!64 &1674403302613275373
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281954906301076732}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9032557090061056480, guid: 5ed1044acbf6f1447bb599164573e52c, type: 3}
 --- !u!1 &281954906512337573
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 624319898873114874}
   ikTarget: {fileID: 0}
+  GravityOnImpact: 0
 --- !u!114 &1477755082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,6 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 624319898291858494}
   ikTarget: {fileID: 0}
+  GravityOnImpact: 0
 --- !u!1 &624319897932149167
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 281954905655429832}
   ikTarget: {fileID: 0}
+  GravityOnImpact: 0
 --- !u!114 &1767078633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,6 +910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 624319898201087241}
   ikTarget: {fileID: 0}
+  GravityOnImpact: 0
 --- !u!1 &624319898201087242
 GameObject:
   m_ObjectHideFlags: 0
