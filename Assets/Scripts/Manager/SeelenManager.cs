@@ -12,7 +12,7 @@ public class SeelenManager : MonoBehaviour
 
     [Header("Values")]
     [SerializeField] int maxSoulParts = 4;
-    [SerializeField] int soulParts = 0;
+    int soulParts = 0;
 
     // Start is called before the first frame update
     void Start()

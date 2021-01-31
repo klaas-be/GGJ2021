@@ -6,8 +6,8 @@ namespace DefaultNamespace
     public class Collectable : MonoBehaviour
     {
         private GameObject Player;
-        [SerializeField]  private float collectDistance = 1.0f;
-        [SerializeField] private float collectionSpeed = 3; 
+        [SerializeField]  private float collectDistance = 2.5f;
+        [SerializeField] private float collectionSpeed = 4; 
 
         private void Awake()
         {
@@ -26,7 +26,7 @@ namespace DefaultNamespace
         {
             transform.position = Vector3.Lerp(transform.position, Player.transform.position, Time.deltaTime * collectionSpeed);
             var distance = Vector3.Distance(transform.position, Player.transform.position);
-            if (distance <= 0.01f)
+            if (distance <= 0.5f)
             {
                 SeelenManager.instance.AddSoul();
                 this.gameObject.SetActive(false);

@@ -128,7 +128,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22584
+  m_Name: pb_Mesh35540
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1378,7 +1378,7 @@ GameObject:
   - component: {fileID: 249454446}
   m_Layer: 0
   m_Name: OuterWall
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6529,7 +6529,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22502
+  m_Name: pb_Mesh35458
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6701,7 +6701,7 @@ GameObject:
   - component: {fileID: 537190377}
   m_Layer: 0
   m_Name: InnerWall
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
