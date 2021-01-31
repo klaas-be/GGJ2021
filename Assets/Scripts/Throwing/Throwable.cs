@@ -11,6 +11,7 @@ namespace Throwing
 
         public Transform anchor;
         public Transform ikTarget;
+        public bool GravityOnImpact; 
 
         public bool IsAttached { get { return transform.parent != null; } }
         public Interactable ConnectedInteractable { get; set; }
@@ -25,7 +26,16 @@ namespace Throwing
         private void Start()
         {
             parent = transform.parent;
-            coll = this.GetComponent<Collider>();
+            if (GravityOnImpact)
+            {
+               rb =  gameObject.AddComponent<Rigidbody>();
+               rb.useGravity = false;
+               coll = gameObject.GetComponent<Collider>();
+               if (coll == null)
+               {
+                   Debug.LogError("No collider attached to "+name+" but gravity on impact is set to true");
+               }
+            }
         }
 
         public void StartReattach()
@@ -47,6 +57,15 @@ namespace Throwing
             if (IsAttached) yield  break;
             
 
+            if(coll!=null)
+                coll.isTrigger = true;
+
+            bool wasGravityOnImpact = GravityOnImpact;
+
+            rb.isKinematic = true;
+
+
+            GravityOnImpact = false;
             float elapse_time = 0;
 
             while (Vector3.Distance(anchor.transform.position, transform.position) > 0.1f)
@@ -59,6 +78,11 @@ namespace Throwing
 
             if(ikTarget != null)
                 ikTarget.position = originalTargetPosition;
+
+            rb.useGravity = false; 
+            
+            if(wasGravityOnImpact)
+                GravityOnImpact = true;
             
             transform.parent = parent;
             transform.position = anchor.position;
@@ -90,5 +114,21 @@ namespace Throwing
             ikTarget.position = targetPosition;
 
         }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (!GravityOnImpact) return;
+            Debug.Log("Entered Collisioin");
+            if (other.gameObject.CompareTag("level"))
+            {
+               
+                if(coll != null)
+                    coll.isTrigger = false;
+                
+                rb.useGravity = true;
+            }
+        }
+        
+        
     }
 }
