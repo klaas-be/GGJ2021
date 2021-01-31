@@ -18,9 +18,7 @@ namespace Throwing
         private Transform parent;
         private Vector3 originalTargetPosition;
         private Rigidbody rb;
-        private Collider coll; 
-        
-        private Vector3 originalTargetPosition;
+        private Collider coll;
 
         private UnityEvent endReattachEvent;
 
