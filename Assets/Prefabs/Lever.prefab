@@ -183,7 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd6a9655c13c944faf7aef420a3557d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMaterials: []
+  selectedMaterials:
+  - {fileID: 2100000, guid: 6842ece28c46cdb4f99605b2d76bfb17, type: 2}
   rendererOnChange: {fileID: 3939944199557392886}
   InteractableEvent:
     m_PersistentCalls:

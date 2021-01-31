@@ -56,7 +56,12 @@ public class Thrower : MonoBehaviour
         if (Input.GetKeyDown(InteractionKey))
         {
             if(Projectile.ConnectedInteractable != null)
-                Projectile.ConnectedInteractable.Interact();
+                Projectile.ConnectedInteractable.Interact(true);
+        }
+        if (Input.GetKeyUp(InteractionKey))
+        {
+            if(Projectile.ConnectedInteractable != null)
+                Projectile.ConnectedInteractable.Interact(false);
         }
     }
 

@@ -18,24 +18,24 @@ namespace Throwing
         {
             if (DebugToggle)
             {
-                Interact();
+                Interact(!state);
                 DebugToggle = false;
             }
         }
 
-        public override void Interact()
+        public override void Interact(bool toState)
         {
-            base.Interact();
-            StartCoroutine(SwitchState());
+            base.Interact(toState);
+            StartCoroutine(SwitchState(toState));
         }
 
-        IEnumerator SwitchState()
+        IEnumerator SwitchState(bool toState)
         {
             float elapsed_time = 0;
             while (elapsed_time < timeToSwitch)
             {
                 elapsed_time += Time.deltaTime;
-                if (state)
+                if (toState)
                 {
                     leverPivot.localRotation = Quaternion.Lerp(Quaternion.Euler(0,0,-45), 
                                             Quaternion.Euler(0, 0, 45), 
@@ -50,7 +50,7 @@ namespace Throwing
                 yield return null;
             }
 
-            state = !state;
+            state = toState;
         }
     }
 }

@@ -8,7 +8,6 @@ namespace DefaultNamespace
 {
     public class Weight : MonoBehaviour
     {
-
         public float influenceRadius;
         public Throwable throwable;
 

@@ -28,23 +28,23 @@ namespace Throwing
         {
             if (DebugToggle)
             {
-                Interact();
+                Interact(!state);
                 DebugToggle = false;
             }
         }
 
-        public override void Interact()
+        public override void Interact(bool toState)
         {
-            base.Interact();
-            StartCoroutine(SwitchState());
+            base.Interact(toState);
+            StartCoroutine(SwitchState(toState));
         }
-        IEnumerator SwitchState()
+        IEnumerator SwitchState(bool toState)
         {
             float elapsed_time = 0;
             while (elapsed_time < timeToSwitch)
             {
                 elapsed_time += Time.deltaTime;
-                if (!state)
+                if (toState)
                     platePivot.position = Vector3.Lerp(startPos, startPos + Vector3.down * plateDipDown, elapsed_time / timeToSwitch);
                 else
                     platePivot.position = Vector3.Lerp(startPos + Vector3.down * plateDipDown, startPos, elapsed_time / timeToSwitch);
@@ -52,12 +52,12 @@ namespace Throwing
                 yield return null;
             }
 
-            if (!state)            
+            if (toState)            
                 platePivot.position = startPos + Vector3.down * plateDipDown;            
             else            
                 platePivot.position = startPos;            
 
-            state = !state;
+            state = toState;
         }
     }
 }
