@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         if (!hasNoLimbs)
             characterController.Move(motion);
         else
-            characterController.Move(new Vector3(0, gravityValue * Time.deltaTime, 0));
+            characterController.Move(new Vector3(0, gravityValue * Time.deltaTime, 0));        
     }
 
     public void SetCrawlmode(bool to)
@@ -109,5 +109,10 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetBodyForward()
     {
         return this.transform.forward;
+    }
+
+    public Vector3 GetCurrentCamRot()
+    {
+        return camRot;
     }
 }

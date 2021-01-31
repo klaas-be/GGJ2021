@@ -15,7 +15,7 @@ public class IKTargetController : MonoBehaviour
     [SerializeField] Transform rightHandTarget;
     [SerializeField] Transform leftFootTarget;
     [SerializeField] Transform rightFootTarget;
-    private bool isLeftHandMoving = false, isRightHandMoving = false, isLeftFootMoving = false, isRightFootMoving = false;
+    private bool isLeftFootMoving = false, isRightFootMoving = false;
 
     [Header("Refs")]
     [SerializeField] PlayerMovement movementScriptRef;
@@ -23,6 +23,7 @@ public class IKTargetController : MonoBehaviour
     [SerializeField] Transform FeetRef;
 
     [Header("Settings")]
+    public float angleAfterTurningStandingStillUpdateFeetAndArms = 60f;
     public float stepTriggerSize = 1.2f;
     public float stepAmount = 1f;
     public float handMoveAmount = 1.5f;
@@ -33,6 +34,7 @@ public class IKTargetController : MonoBehaviour
     private Vector3 moveDir = Vector3.zero;
     private Vector3 lastFrameMovDir = Vector3.zero;
     private Vector3 lastmoveDir = Vector3.zero;
+    private Vector3 lastFeetRotationWhileStanding = Vector3.forward;
     private bool isLeftFootTurn = true;
     private bool isCrawling = false;
 
@@ -162,12 +164,51 @@ public class IKTargetController : MonoBehaviour
                     }
                 }
             }
+            //Wenn beide Füsse weg sind
+            else
+            {
+                RaycastHit hit;
+                //Linke Hand Setzen 
+                if (Vector3.Distance(HandsRef.position, leftHandTarget.position) > stepTriggerSize
+                     && Vector3.Dot(lastmoveDir, leftHandTarget.position - HandsRef.position) < 0)
+                {
+                    Vector3 newPos = HandsRef.position + lastmoveDir * handMoveAmount - HandsRef.right * handOffsetLeftRight;
+                    if (Physics.Raycast(newPos + Vector3.up * 1f, Vector3.down, out hit, 2f))
+                    {
+                        newPos = hit.point;
+                    }
+                    if (leftHandThrowable.IsAttached)
+                    {
+                        StartCoroutine(SetLeftHandTarget(newPos));
+                    }
+                }
+
+                //Rechte Hand Setzen
+                if (Vector3.Distance(HandsRef.position, rightHandTarget.position) > stepTriggerSize
+                     && Vector3.Dot(lastmoveDir, rightHandTarget.position - HandsRef.position) < 0)
+                {
+                    Vector3 newPos = HandsRef.position + lastmoveDir * handMoveAmount + HandsRef.right * handOffsetLeftRight;
+                    if (Physics.Raycast(newPos + Vector3.up * 1f, Vector3.down, out hit, 2f))
+                    {
+                        newPos = hit.point;
+                    }
+                    if (rightHandThrowable.IsAttached)
+                    {
+                        StartCoroutine(SetRightHandTarget(newPos));
+                    }
+                }
+
+            }
         }
 
         //Stehenbleiben
         if (lastFrameMovDir != Vector3.zero && moveDir == Vector3.zero)
         {
             StandStillSetIKs();
+        }
+        else
+        {
+            CheckIfFeetAndHandsShouldRotate();
         }
 
         lastFrameMovDir = moveDir;
@@ -324,6 +365,7 @@ public class IKTargetController : MonoBehaviour
         isLeftFootTurn = true;
     }
 
+    //Wird in UnityEvents benutzt
     public void CheckIfLegsAttached()
     {
         bool check = !leftFootThrowable.IsAttached && !rightFootThrowable.IsAttached;
@@ -337,6 +379,16 @@ public class IKTargetController : MonoBehaviour
         }
 
         movementScriptRef.SetNoLimbsMode(noLimbsCheck);
+    }
+
+    public void CheckIfFeetAndHandsShouldRotate()
+    {
+        if (lastFeetRotationWhileStanding.y - movementScriptRef.GetCurrentCamRot().y > angleAfterTurningStandingStillUpdateFeetAndArms
+            || lastFeetRotationWhileStanding.y - movementScriptRef.GetCurrentCamRot().y < -angleAfterTurningStandingStillUpdateFeetAndArms)
+        {
+            lastFeetRotationWhileStanding = movementScriptRef.GetCurrentCamRot();
+            StandStillSetIKs();
+        }
     }
 
     public float GetFeetOffset()
